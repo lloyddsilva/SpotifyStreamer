@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import kaaes.spotify.webapi.android.models.Artist;
+import kaaes.spotify.webapi.android.models.Image;
 
 /**
  * Created by lloyddsilva on 30/6/15.
@@ -17,7 +18,11 @@ public class ArtistData implements Parcelable {
     public ArtistData(Artist artist) {
         this.artistId = artist.id;
         this.artistName = artist.name;
-        this.artistImageUrl = artist.images.get(0).url;
+        for(Image image : artist.images) {
+            if(image.width >= 150 && image.width <= 600) {
+                this.artistImageUrl = image.url;
+            }
+        }
     }
 
     private ArtistData(Parcel in) {

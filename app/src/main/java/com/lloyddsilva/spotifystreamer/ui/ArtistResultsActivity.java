@@ -97,6 +97,7 @@ public class ArtistResultsActivity extends ListActivity {
 
                     ArtistsPager results = spotify.searchArtists(query);
 
+                    mArtists.clear();
                     for(Artist artist : results.artists.items) {
                         mArtists.add(new ArtistData(artist));
                     }
