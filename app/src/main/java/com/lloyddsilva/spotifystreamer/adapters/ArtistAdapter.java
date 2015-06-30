@@ -73,7 +73,11 @@ public class ArtistAdapter extends BaseAdapter {
         ArtistData artistData = (ArtistData) getItem(position);
 
         holder.artistNameTextView.setText(artistData.getArtistName());
-        Picasso.with(mContext).load(artistData.getArtistImageUrl()).into(holder.artistCoverImageView);
+        Picasso.with(mContext)
+                .load(artistData.getArtistImageUrl())
+                .placeholder(R.drawable.album_placeholder)
+                .error(R.drawable.album_placeholder)
+                .into(holder.artistCoverImageView);
 
         return convertView;
     }
