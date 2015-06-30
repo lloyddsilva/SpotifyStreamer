@@ -1,4 +1,4 @@
-package com.lloyddsilva.spotifystreamer;
+package com.lloyddsilva.spotifystreamer.ui;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.lloyddsilva.spotifystreamer.R;
 
 public class MainActivity extends ActionBarActivity {
 

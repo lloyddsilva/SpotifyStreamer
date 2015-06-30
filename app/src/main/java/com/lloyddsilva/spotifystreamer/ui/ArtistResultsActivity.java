@@ -1,4 +1,4 @@
-package com.lloyddsilva.spotifystreamer;
+package com.lloyddsilva.spotifystreamer.ui;
 
 import android.app.ListActivity;
 import android.app.SearchManager;
@@ -8,24 +8,33 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.lloyddsilva.spotifystreamer.R;
+import com.lloyddsilva.spotifystreamer.adapters.ArtistAdapter;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
+import kaaes.spotify.webapi.android.models.Artist;
 import kaaes.spotify.webapi.android.models.ArtistsPager;
 
 public class ArtistResultsActivity extends ListActivity {
-
-    //TextView dummyTextView;
+    private Artist[] mArtists;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artist_results);
 
-        //dummyTextView = (TextView) findViewById(R.id.dummyTextView);
-
         handleIntent(getIntent());
+
+//        String[] artists = {"Coldplay", "Hotplay"};
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, artists);
+//        setListAdapter(adapter);
+
+        ArtistAdapter adapter = new ArtistAdapter(this, mArtists);
+
     }
 
     @Override
@@ -99,7 +108,6 @@ public class ArtistResultsActivity extends ListActivity {
         @Override
         protected void onPostExecute(String result) {
             System.out.println(result);
-            //dummyTextView.setText(result);
         }
     }
 }
