@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import com.lloyddsilva.spotifystreamer.R;
 import com.lloyddsilva.spotifystreamer.adapters.ArtistAdapter;
+import com.lloyddsilva.spotifystreamer.models.ArtistData;
+
+import java.util.ArrayList;
 
 import kaaes.spotify.webapi.android.SpotifyApi;
 import kaaes.spotify.webapi.android.SpotifyService;
@@ -20,20 +23,19 @@ import kaaes.spotify.webapi.android.models.Artist;
 import kaaes.spotify.webapi.android.models.ArtistsPager;
 
 public class ArtistResultsActivity extends ListActivity {
-    private Artist[] mArtists;
+    private ArrayList<ArtistData> mArtists;
+    ArtistAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artist_results);
+        mArtists = new ArrayList<ArtistData>();
 
         handleIntent(getIntent());
 
-//        String[] artists = {"Coldplay", "Hotplay"};
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, artists);
-//        setListAdapter(adapter);
-
-        ArtistAdapter adapter = new ArtistAdapter(this, mArtists);
+        adapter = new ArtistAdapter(this, mArtists);
+        setListAdapter(adapter);
 
     }
 
@@ -95,11 +97,14 @@ public class ArtistResultsActivity extends ListActivity {
 
                     ArtistsPager results = spotify.searchArtists(query);
 
+                    for(Artist artist : results.artists.items) {
+                        mArtists.add(new ArtistData(artist));
+                    }
+
                     response = results.toString();
                 } catch (Exception e) {
                     response = e.getStackTrace().toString();
                 }
-
             }
 
             return response;
@@ -107,6 +112,7 @@ public class ArtistResultsActivity extends ListActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            adapter.notifyDataSetChanged();
             System.out.println(result);
         }
     }

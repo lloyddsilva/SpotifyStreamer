@@ -12,6 +12,8 @@ import com.lloyddsilva.spotifystreamer.R;
 import com.lloyddsilva.spotifystreamer.models.ArtistData;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import kaaes.spotify.webapi.android.models.Artist;
 
 /**
@@ -19,21 +21,21 @@ import kaaes.spotify.webapi.android.models.Artist;
  */
 public class ArtistAdapter extends BaseAdapter {
     private Context mContext;
-    private Artist[] mArtists;
+    private ArrayList<ArtistData> mArtists;
 
-    public ArtistAdapter(Context context, Artist[] artists) {
+    public ArtistAdapter(Context context, ArrayList<ArtistData> artists) {
         this.mContext = context;
         this.mArtists = artists;
     }
 
     @Override
     public int getCount() {
-        return this.mArtists.length;
+        return this.mArtists.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return this.mArtists[position];
+        return this.mArtists.get(position);
     }
 
     @Override
@@ -68,13 +70,12 @@ public class ArtistAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Artist artist = (Artist) getItem(position);
-        ArtistData artistData = new ArtistData(artist);
+        ArtistData artistData = (ArtistData) getItem(position);
 
         holder.artistNameTextView.setText(artistData.getArtistName());
         Picasso.with(mContext).load(artistData.getArtistImageUrl()).into(holder.artistCoverImageView);
 
-        return null;
+        return convertView;
     }
 
     private static class ViewHolder {
