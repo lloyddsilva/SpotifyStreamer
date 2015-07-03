@@ -15,19 +15,29 @@
         android:layout_gravity="left"
         android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/artist_name"
-        android:id="@+id/trackNameTextView"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="3"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="3" >
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/artist_name"
-        android:id="@+id/albumNameTextView"
-        android:layout_marginLeft="20dp"
-        android:layout_weight="3"/>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/artist_name"
+            android:id="@+id/trackNameTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/artist_name"
+            android:id="@+id/albumNameTextView"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+
 </LinearLayout>
