@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.lloyddsilva.spotifystreamer.ui.MainActivity">
 
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
-
     <item android:id="@+id/menu_search" android:title="@string/menu_search"
         appcompat:actionViewClass="android.support.v7.widget.SearchView"
         appcompat:showAsAction="always"/>

@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class MainActivity extends ActionBarActivity {
     TextView startSearchTextView;
     TextView noArtistsTextView;
 
+    public final static String EXTRA_ARTIST_ID = "ARTIST_ID";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,18 @@ public class MainActivity extends ActionBarActivity {
 
         artistResultsListView.setEmptyView(startSearchTextView);
         artistResultsListView.setAdapter(adapter);
+
+        artistResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ArtistData artistData = mArtists.get(position);
+                String artistId = artistData.getArtistId();
+
+                Intent intent = new Intent(view.getContext(), TopTenTracksActivity.class);
+                intent.putExtra(EXTRA_ARTIST_ID, artistId);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -135,7 +150,6 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected void onPostExecute(String result) {
             adapter.notifyDataSetChanged();
-            System.out.println(result);
         }
     }
 }
