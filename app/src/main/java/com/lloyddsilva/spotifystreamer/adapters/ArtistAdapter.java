@@ -45,16 +45,6 @@ public class ArtistAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-//        SquaredImageView view = (SquaredImageView) convertView;
-//        if(view == null) {
-//            view = new SquaredImageView(mContext);
-//        }
-//
-//        Artist artist = (Artist) getItem(position);
-
-        //String url = artist.images.get(0);
-
-        //Picasso.with(mContext).load(url).into(view);
 
         ViewHolder holder;
 
