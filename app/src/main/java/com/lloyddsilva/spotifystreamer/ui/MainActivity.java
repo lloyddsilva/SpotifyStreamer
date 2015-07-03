@@ -105,8 +105,10 @@ public class MainActivity extends ActionBarActivity {
         // Verify the action and get the query
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
+
             startSearchTextView.setVisibility(View.INVISIBLE);
             artistResultsListView.setEmptyView(noArtistsTextView);
+
             doSearch(query);
         }
     }

@@ -12,7 +12,8 @@
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_artist_results"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,7 +27,8 @@
         <activity
             android:name=".ui.TopTenTracksActivity"
             android:label="@string/title_activity_top_ten_tracks"
-            android:parentActivityName=".ui.MainActivity" >
+            android:parentActivityName=".ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
