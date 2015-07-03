@@ -77,6 +77,8 @@ public class ArtistAdapter extends BaseAdapter {
                 .load(artistData.getArtistImageUrl())
                 .placeholder(R.drawable.album_placeholder)
                 .error(R.drawable.album_placeholder)
+                .resize(250, 250)
+                .centerCrop()
                 .into(holder.artistCoverImageView);
 
         return convertView;
