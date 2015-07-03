@@ -10,7 +10,9 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lloyddsilva.spotifystreamer.R;
 import com.lloyddsilva.spotifystreamer.adapters.ArtistAdapter;
@@ -27,6 +29,8 @@ public class MainActivity extends ActionBarActivity {
     private ArrayList<ArtistData> mArtists;
     ArtistAdapter adapter;
     ListView artistResultsListView;
+    TextView startSearchTextView;
+    TextView noArtistsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,10 @@ public class MainActivity extends ActionBarActivity {
 
         adapter = new ArtistAdapter(this, mArtists);
         artistResultsListView = (ListView) findViewById(R.id.artistResultsListView);
+        startSearchTextView = (TextView) findViewById(R.id.startSearchTextView);
+        noArtistsTextView = (TextView) findViewById(R.id.noArtistsTextView);
+
+        artistResultsListView.setEmptyView(startSearchTextView);
         artistResultsListView.setAdapter(adapter);
     }
 
@@ -82,6 +90,8 @@ public class MainActivity extends ActionBarActivity {
         // Verify the action and get the query
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
+            startSearchTextView.setVisibility(View.INVISIBLE);
+            artistResultsListView.setEmptyView(noArtistsTextView);
             doSearch(query);
         }
     }

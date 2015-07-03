@@ -10,5 +10,6 @@
     <string name="menu_search">Search Menu</string>
     <string name="search_results">Search Results</string>
     <string name="no_artists_found">No Artists Found. Please refine your search.</string>
+    <string name="start_search">Search for an artist above</string>
     <string name="artist_name">Artist Name</string>
 </resources>
